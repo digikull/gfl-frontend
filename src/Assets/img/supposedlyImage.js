@@ -1,0 +1,1 @@
+// This is just a place holder for git. Delete this and add your image files in this directory.
