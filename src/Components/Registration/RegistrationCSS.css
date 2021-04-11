@@ -36,7 +36,6 @@ body {
   border-bottom-left-radius: 0;
   /* background-color: #5f5fc4;
   color: #f57c00; */
-  
 }
 
 .form-signin input[type="password"] {
@@ -45,14 +44,61 @@ body {
   border-top-right-radius: 0;
 }
 
-
 h1 {
   text-align: center;
   /* color: #f57c00; */
 }
 
-
 label {
   /* color: #f57c00; */
-  opacity: 1; 
-} 
+  opacity: 1;
+}
+
+.card {
+  width: 350px;
+  padding: 10px;
+  border-radius: 20px;
+  background: #fff;
+  border: none;
+  height: 350px;
+  position: relative;
+}
+
+.registrationCard {
+  width: 350px;
+  padding: 10px;
+  border-radius: 20px;
+  background: #fff;
+  border: none;
+  height: 450px;
+  position: relative;
+}
+
+.container {
+  height: 100vh;
+}
+
+body {
+  background: #eee;
+}
+
+.mobile-text {
+  color: #989696b8;
+  font-size: 15px;
+}
+
+.form-control {
+  margin-right: 12px;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  
+  outline: 0;
+  box-shadow: none;
+}
+
+.cursor {
+  cursor: pointer;
+}

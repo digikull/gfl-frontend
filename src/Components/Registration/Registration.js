@@ -1,30 +1,40 @@
 import React, { useState } from "react";
-
-import { Link,useHistory } from "react-router-dom";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 export default function Register(props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
 
   const [password, setPassword] = useState("");
-  const [status, setStatus] = useState();
   const history = useHistory();
 
   const handleSubmit = () => {
-    // SecureAxios({
-    //   method: "POST",
-    //   url: "userApi/register/",
-    //   data: { username: username, password: password },
-    // })
-    //   .then((res) => setStatus(res.data.status))
-    //   .catch((e) => console.log(e));
-    //   history.push("/logIn");
-    console.log("Username:",username,"Email: ",email)
+    axios({
+      method: "POST",
+      url: "http://127.0.0.1:8000/users/registerUser/",
+      data: {
+        username: username,
+        email: email,
+        number: localStorage.number,
+        password: password,
+      },
+    })
+      .then((res) => {
+        if (res.data.IntegrityError === true) {
+          alert("All Fields must be Unique");
+        } else {
+          alert("User Registered");
+          localStorage.clear();
+          // history.push("/login")
+        }
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
-    <div className="text-center login-body">
-      <div className="form-signin">
+    <div className="text-center login-body d-flex justify-content-center align-items-center container">
+      <div className="form-signin registrationCard py-5 px-4">
         <h1 className="h3 mb-3 fw-normal">Register</h1>
         <label for="inputEmail" className="visually-hidden">
           Username
@@ -35,7 +45,7 @@ export default function Register(props) {
           className="form-control mb-3"
           placeholder="Username"
           required
-          autofocus
+          autoFocus
           onChange={(event) => setUsername(event.target.value)}
         />
 
@@ -48,9 +58,21 @@ export default function Register(props) {
           className="form-control mb-3"
           placeholder="Email Address"
           required
-          autofocus
+          autoFocus
           onChange={(event) => setEmail(event.target.value)}
         />
+
+        <input
+          type="text"
+          id="inputUsername"
+          className="form-control mb-3"
+          value={localStorage.number}
+          required
+          autoFocus
+          disabled="disabled"
+          onChange={(event) => setUsername(event.target.value)}
+        />
+
         <label for="inputPassword" className="visually-hidden">
           Password
         </label>
@@ -74,29 +96,15 @@ export default function Register(props) {
           required
         />
 
-        {status ? (
-          <Link to="/logIn">
-            <button
-              type="submit"
-              className="btn btn-outline-primary btn-lg"
-              onClick={() => {
-                handleSubmit();
-              }}
-            >
-              Regsiter Me
-            </button>
-          </Link>
-        ) : (
-          <button
-            type="submit"
-            className="btn btn-outline-primary btn-lg"
-            onClick={() => {
-              handleSubmit();
-            }}
-          >
-            Regsiter Me
-          </button>
-        )}
+        <button
+          type="submit"
+          className="btn btn-outline-primary btn-lg"
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          Regsiter Me
+        </button>
       </div>
     </div>
   );
