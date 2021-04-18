@@ -30,6 +30,8 @@ function App() {
       <hr />
       <Switch>
         <Route exact path="/Todo" component={Create_Tournament} />
+        <Route  path="/List_Tournaments" component={List_Tournaments} />
+        
       </Switch>
     </div>
      

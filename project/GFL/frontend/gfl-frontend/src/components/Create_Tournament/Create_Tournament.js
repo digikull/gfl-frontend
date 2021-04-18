@@ -72,8 +72,8 @@ class Create_Tournament extends React.Component {
           tournament_detials :  e.target['tournament_detials'].value,
           lat : 12.84, 
           lon : 12.96,
-         // start_date: e.target['start_date'].value,
-          //end_date: e.target['end_date'].value,
+          start_date: e.target['start_date'].value,
+          end_date: e.target['end_date'].value,
           
 
       };
@@ -96,7 +96,7 @@ class Create_Tournament extends React.Component {
 
  
      
-secureAxios.Create_Tournament( object.tournament_name, object.tournament_type, object.tournament_class, object.tournament_total_team, object.tournament_template, object.tournament_detials, object.lat, object.lon)
+secureAxios.Create_Tournament( object.tournament_name, object.tournament_type, object.tournament_class, object.tournament_total_team, object.tournament_template, object.tournament_detials, object.lat, object.lon,object.start_date,object.end_date)
 .then(res => { 
   console.log("You have successfully Create Tournament.");
  
@@ -202,10 +202,10 @@ secureAxios.Create_Tournament( object.tournament_name, object.tournament_type, o
 
   
         <label className="labelm-3"><b>Tournament Start Date</b></label>
-  <input type="date"  />
+  <input type="datetime-local" name="start_date" />
 
   <label className="label m-3"><b>Tournament End Date</b></label>
-  <input type="date"/><br/>
+  <input type="datetime-local" name="end_date"/><br/>
      
         <label className="label"><b><u>Tournament Details</u></b></label>
 
@@ -261,3 +261,5 @@ export default GoogleApiWrapper({
   apiKey: 'AIzaSyCfkGTl0-EvlzhhBNWs6Mp08Qef68QpVUI'
 })(Create_Tournament);
 //export default Create_Tournament;
+
+
