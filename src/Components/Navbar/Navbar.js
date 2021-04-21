@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import gflLogo from '../../Assets/img/GFL Logo.png'
+import { useCookies } from 'react-cookie'
 
 
 function Navbar() {
+    const [token, setToken, removeToken] = useCookies(['mytoken'])
     const [isLogin, setLogin] = useState(false)
+
+    const logoutBtn = () => {
+        removeToken(['mytoken'])
+    }
 
     const logo = {
         marginLeft: '10px',
@@ -40,7 +46,7 @@ function Navbar() {
                         <ul id="link" className="nav navbar-nav navbar-right">
                             <li style={navLinkss}><a href="/create tournament">Create Tournament</a></li>
                             <li style={navLinkss}><a href="/profile">My Profile</a></li>
-                            <li style={navLinkss} id="button-link"><a href="#"><span className="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                            <li style={navLinkss} id="button-link" onClick={logoutBtn}><a href="/login"><span className="glyphicon glyphicon-log-out"></span> Log out</a></li>
                         </ul>
                     </div>
                 </div>
