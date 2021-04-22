@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import RegistrationCSS from "./RegistrationCSS.css";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
-// import secureAxios from "../src/Config/secureAxios/secureAxios"
+
+import secureAxios from "../../Config/secureAxios/secureAxios";
+import RegistrationCSS from "./RegistrationCSS.css";
 
 export default function CheckOTP(props) {
- 
   const [status, setStatus] = useState(false);
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
@@ -16,9 +15,9 @@ export default function CheckOTP(props) {
   const history = useHistory();
 
   const checkOtp = async () => {
-    await axios({
+    await secureAxios({
       method: "PUT",
-      url: "http://127.0.0.1:8000/users/checkOTP/",
+      url: "users/checkOTP/",
       data: {
         number: localStorage.number,
         otp: finalOTP,

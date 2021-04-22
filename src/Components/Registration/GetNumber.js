@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import RegistrationCSS from "./RegistrationCSS.css";
-import axios from "axios";
-// import secureAxios from "../src/Config/secureAxios/secureAxios"
+import secureAxios from "../../Config/secureAxios/secureAxios";
 
 export default function GetNumber(props) {
   const [inputNumber, setInputNumber] = useState("");
-
   const history = useHistory();
-
   localStorage.setItem("number", inputNumber);
 
   const SendOtp = () => {
-    axios({
+    secureAxios({
       method: "POST",
-      url: "http://127.0.0.1:8000/users/sendOTP/",
+      url: "users/sendOTP/",
       data: {
         number: inputNumber,
       },
@@ -27,7 +25,6 @@ export default function GetNumber(props) {
         }
       })
       .catch((e) => console.log(e));
-    console.log("This is Input Number", inputNumber);
   };
 
   return (
@@ -44,15 +41,10 @@ export default function GetNumber(props) {
             onChange={(e) => {
               setInputNumber(e.target.value);
             }}
-            // {...register("Number", { pattern: /^[0-9]{10}$/ })}
           />
 
           <label for="floatingInput">Enter Your Mobile Number</label>
         </div>
-
-        {/* <div style={{ marginTop: "5%" }}>
-            {errors.Number && <span style={style.error}>Invalid Number</span>}
-          </div> */}
 
         <button
           className="btn btn-lg btn-outline-primary  my-4 mx-5"

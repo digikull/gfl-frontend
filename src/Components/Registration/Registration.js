@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
+
+import secureAxios from "../../Config/secureAxios/secureAxios";
 
 export default function Register(props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
   const history = useHistory();
 
   const handleSubmit = () => {
-    axios({
+    secureAxios({
       method: "POST",
-      url: "http://127.0.0.1:8000/users/registerUser/",
+      url: "users/registerUser/",
       data: {
         username: username,
         email: email,
@@ -97,7 +97,6 @@ export default function Register(props) {
         />
 
         <button
-          type="submit"
           className="btn btn-outline-primary btn-lg"
           onClick={() => {
             handleSubmit();
