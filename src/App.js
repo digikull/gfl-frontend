@@ -1,7 +1,9 @@
+import EditPlayer from "./Components/Player/EditPlayer";
+
 function App() {
   return (
     <div className="App">
-      <h1>GFL</h1>
+      <EditPlayer />
     </div>
   );
 }
