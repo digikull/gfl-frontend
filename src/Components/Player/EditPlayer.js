@@ -13,9 +13,10 @@ function EditPlayer() {
         />
         <div className="pl-sm-4 pl-2 mx-3" id="img-section">
           <b>Profile Photo</b> <br></br>
-          <button className="btn button border">
+          <input type="file" id="upload" hidden />
+          <label for="upload" className="btn button border">
             <b>Upload</b>
-          </button>
+          </label>
         </div>
       </div>
       <div className="py-2">
@@ -69,7 +70,6 @@ function EditPlayer() {
               </option>
               <option value="bowler">Bowler</option>
               <option value="batsman">Batsman</option>
-              
             </select>{" "}
           </div>
           <div className="col-md-6 pt-md-0 pt-3" id="lang">
